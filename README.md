@@ -1,1 +1,1 @@
-# Pimenta-
+# Pimenta
