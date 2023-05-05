@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+	<title>
+	    Pastel
+	</title>
+	<style>
+		.container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+			background-color: #F0F8FF;
+			padding: 20px;
+			box-sizing: border-box;
+		}
+
+		.box {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 200px;
+			height: 200px;
+			margin: 20px;
+			background-color: blue;
+			color: white;
+			font-size: 24px;
+			font-weight: bold;
+			cursor: pointer;
+		}
+
+		.box-red {
+			background-color: red;
+		}
+
+		.message {
+			display: none;
+			font-size: 36px;
+			font-weight: bold;
+			color: green;
+			margin-top: 50px;
+		}
+
+		.message-red {
+			display: none;
+			font-size: 36px;
+			font-weight: bold;
+			color: red;
+			margin-top: 50px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>
+		    Bora comer uns pasteis depois?
+		</h1>
+		<div class="box">
+			<div>Sim</div>
+		</div>
+		<div class="box box-red">
+			<div>Não</div>
+		</div>
+		<div class="message" id="message">Você conseguiu!!</div>
+		<div class="message-red" id="message-red">Não foi dessa vez, tente mais tarde!</div>
+	</div>
+
+	<script>
+		let simBox = document.querySelector('.box');
+		let naoBox = document.querySelector('.box-red');
+		let message = document.querySelector('#message');
+		let messageRed = document.querySelector('#message-red');
+		let counter = 0;
+
+		simBox.addEventListener('click', function() {
+			if (counter < 10) {
+				let newX = Math.floor(Math.random() * (window.innerWidth - 200));
+				let newY = Math.floor(Math.random() * (window.innerHeight - 200));
+				simBox.style.transform = `translate(${newX}px, ${newY}px)`;
+				counter++;
+			}
+			if (counter == 10) {
+				message.style.display = 'block';
+			}
+		});
+
+		naoBox.addEventListener('click', function() {
+			messageRed.style.display = 'block';
+		});
+	</script>
+</body>
+</html>
